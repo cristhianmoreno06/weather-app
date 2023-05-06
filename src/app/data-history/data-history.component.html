@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="card text-center">
+    <div class="card-header">
+      <h2>Historial de humedad</h2>
+    </div>
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Ciudad</th>
+          <th scope="col">Humedad</th>
+          <th scope="col">Fecha</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let history of result | paginate : { itemsPerPage: tableSize, currentPage: page,totalItems: count };
+          let i = index
+        ">
+          <th scope="row">{{history.id}}</th>
+          <td>{{history.city}}</td>
+          <td>{{history.humidity}}</td>
+          <td>{{history.created_at | date:'dd-MM-yyyy'}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer text-muted">
+      <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)"></pagination-controls>
+      Elaborado por Cristhian Moreno.
+    </div>
+  </div>
+</div>
