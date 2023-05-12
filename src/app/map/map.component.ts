@@ -32,7 +32,7 @@ export class MapComponent {
         for (let city of data.data) {
           let marker = L.marker([city.lat, city.long])
             .addTo(this.map)
-            .bindPopup(`Humedad: ${city.humidity}%`);
+            .bindPopup('<p>Ciudad: '+ city.city +'<br />Humedad: '+ city.humidity +' %</p>').openPopup();
 
           this.markers.push(marker);
         }
