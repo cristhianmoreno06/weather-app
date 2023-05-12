@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-data-history',
@@ -22,7 +23,7 @@ export class DataHistoryComponent implements OnInit {
   }
 
   dataHistory() {
-    return this.http.get('http://weather_services.local/api/humidity-history')
+    return this.http.get(environment.apiUrl + 'humidity-history')
       .subscribe((data: any) => {
         this.result = data;
       },error => this.error = error);

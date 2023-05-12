@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import * as L from 'leaflet';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-map',
@@ -26,7 +27,7 @@ export class MapComponent {
   }
 
   getHumidityData() {
-    this.http.get('http://weather_services.local/api/weather')
+    this.http.get(environment.apiUrl + 'weather')
       .subscribe((data: any) => {
         console.log(data.data[0].long)
         for (let city of data.data) {
